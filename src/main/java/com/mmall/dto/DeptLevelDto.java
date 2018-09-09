@@ -9,25 +9,15 @@ import org.springframework.beans.BeanUtils;
 
 import java.util.List;
 
-/**
- * @Author: wb-yxk397023
- * @Date: Created in 2018/9/8
- */
 @Getter
 @Setter
 @ToString
 public class DeptLevelDto extends SysDept {
 
-    private List<DeptLevelDto> deptList = Lists.newArrayList();
+    private List<com.mmall.dto.DeptLevelDto> deptList = Lists.newArrayList();
 
-    /**
-     * 适配方法
-     *
-     * @param dept
-     * @return
-     */
-    public static DeptLevelDto adapt(SysDept dept) {
-        DeptLevelDto dto = new DeptLevelDto();
+    public static com.mmall.dto.DeptLevelDto adapt(SysDept dept) {
+        com.mmall.dto.DeptLevelDto dto = new com.mmall.dto.DeptLevelDto();
         BeanUtils.copyProperties(dept, dto);
         return dto;
     }

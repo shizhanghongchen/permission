@@ -13,44 +13,51 @@
         </property>
     </bean>
 
+    <context:annotation-config /> <!-- 从spring-servlet.xml里转移过来的 -->
+    <context:component-scan base-package="com.mmall.service" /> <!-- 从spring-servlet.xml里转移过来的 -->
+
+    <bean class="com.mmall.common.ApplicationContextHelper" lazy-init="false" /> <!-- 从spring-servlet.xml里转移过来的 -->
+
+    <import resource="redis.xml" />
+
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <property name="driverClassName" value="${db.driverClassName}"/>
-        <property name="url" value="${db.url}"/>
-        <property name="username" value="${db.username}"/>
-        <property name="password" value="${db.password}"/>
-        <property name="initialSize" value="3"/>
-        <property name="minIdle" value="3"/>
-        <property name="maxActive" value="20"/>
-        <property name="maxWait" value="60000"/>
-        <property name="filters" value="stat,wall"/>
+        <property name="driverClassName" value="${db.driverClassName}" />
+        <property name="url" value="${db.url}" />
+        <property name="username" value="${db.username}" />
+        <property name="password" value="${db.password}" />
+        <property name="initialSize" value="3" />
+        <property name="minIdle" value="3" />
+        <property name="maxActive" value="20" />
+        <property name="maxWait" value="60000" />
+        <property name="filters" value="stat" />
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="configLocation" value="classpath:mybatis-config.xml"/>
-        <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml" />
+        <property name="dataSource" ref="dataSource" />
+        <property name="mapperLocations" value="classpath:mapper/*.xml" />
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.mmall.dao"/>
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="com.mmall.dao" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 
     <!-- tx -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"/>
+        <property name="dataSource" ref="dataSource" />
     </bean>
 
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <tx:annotation-driven transaction-manager="transactionManager" />
 
     <!-- druid -->
     <bean id="stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
-        <property name="slowSqlMillis" value="3000"/>
-        <property name="logSlowSql" value="true"/>
-        <property name="mergeSql" value="true"/>
+        <property name="slowSqlMillis" value="3000" />
+        <property name="logSlowSql" value="true" />
+        <property name="mergeSql" value="true" />
     </bean>
     <bean id="wall-filter" class="com.alibaba.druid.wall.WallFilter">
-        <property name="dbType" value="mysql"/>
+        <property name="dbType" value="mysql" />
     </bean>
 
 </beans>

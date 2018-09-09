@@ -6,20 +6,20 @@
 
     <settings>
         <setting name="safeRowBoundsEnabled" value="true"/>
-        <setting name="cacheEnabled" value="false"/>
-        <setting name="useGeneratedKeys" value="true"/>
+        <setting name="cacheEnabled" value="false" />
+        <setting name="useGeneratedKeys" value="true" />
     </settings>
 
     <!--<typeAliases>-->
-    <!---->
+        <!---->
     <!--</typeAliases>-->
 
     <!--<plugins>-->
-    <!--<plugin interceptor=""></plugin>-->
+        <!--<plugin interceptor=""></plugin>-->
     <!--</plugins>-->
 
     <!--<typeHandlers>-->
-    <!---->
+        <!---->
     <!--</typeHandlers>-->
 
 </configuration>

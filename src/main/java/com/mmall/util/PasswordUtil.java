@@ -1,29 +1,11 @@
 package com.mmall.util;
 
+import java.util.Date;
 import java.util.Random;
 
-/**
- * password工具类
- *
- * @Author: wb-yxk397023
- * @Date: Created in 2018/9/8
- */
 public class PasswordUtil {
 
-    /**
-     * 生成密码的最小长度
-     */
-    private final static int PASSWORD_MIN_LENGTH = 8;
-
-    /**
-     * 生成密码的随机长度
-     */
-    private final static int PASSWORD_MAX_RANDOM_LENGTH = 3;
-
-    /**
-     * 密码可以使用的字符常量
-     */
-    public final static String[] WORD = {
+    public final static String[] word = {
             "a", "b", "c", "d", "e", "f", "g",
             "h", "j", "k", "m", "n",
             "p", "q", "r", "s", "t",
@@ -34,46 +16,27 @@ public class PasswordUtil {
             "U", "V", "W", "X", "Y", "Z"
     };
 
-    /**
-     * 密码可以使用的数字常量
-     */
-    public final static String[] NUM = {
+    public final static String[] num = {
             "2", "3", "4", "5", "6", "7", "8", "9"
     };
 
-    /**
-     * 生成随机密码
-     *
-     * @return
-     */
     public static String randomPassword() {
-        // 定义容器
         StringBuffer stringBuffer = new StringBuffer();
-        // 定义随机数
-        Random random = new Random(System.currentTimeMillis());
-        // 定义标识符
+        Random random = new Random(new Date().getTime());
         boolean flag = false;
-        // 定义随机长度
-        int length = random.nextInt(PASSWORD_MAX_RANDOM_LENGTH) + PASSWORD_MIN_LENGTH;
-        // 循环拼装
+        int length = random.nextInt(3) + 8;
         for (int i = 0; i < length; i++) {
             if (flag) {
-                stringBuffer.append(NUM[random.nextInt(NUM.length)]);
+                stringBuffer.append(num[random.nextInt(num.length)]);
             } else {
-                stringBuffer.append(WORD[random.nextInt(WORD.length)]);
+                stringBuffer.append(word[random.nextInt(word.length)]);
             }
             flag = !flag;
         }
-        // 返回
         return stringBuffer.toString();
     }
 
-    /**
-     * 验证password工具类
-     *
-     * @param args
-     */
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
         System.out.println(randomPassword());
         Thread.sleep(100);
         System.out.println(randomPassword());

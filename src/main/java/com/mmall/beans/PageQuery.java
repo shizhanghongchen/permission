@@ -5,10 +5,6 @@ import lombok.Setter;
 
 import javax.validation.constraints.Min;
 
-/**
- * @Author: wb-yxk397023
- * @Date: Created in 2018/9/9
- */
 public class PageQuery {
 
     @Getter

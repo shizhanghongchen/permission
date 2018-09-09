@@ -8,23 +8,11 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.ser.impl.SimpleFilterProvider;
 import org.codehaus.jackson.type.TypeReference;
 
-/**
- * Json转化工具-JsonMapper
- *
- * @Author: wb-yxk397023
- * @Date: Created in 2018/9/6
- */
 @Slf4j
 public class JsonMapper {
 
-    /**
-     * 定义全局JsonMapper
-     */
     private static ObjectMapper objectMapper = new ObjectMapper();
 
-    /**
-     * objectMapper初始化
-     */
     static {
         // config
         objectMapper.disable(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES);
@@ -33,13 +21,6 @@ public class JsonMapper {
         objectMapper.setSerializationInclusion(JsonSerialize.Inclusion.NON_EMPTY);
     }
 
-    /**
-     * 将对象转换成字符串
-     *
-     * @param src
-     * @param <T>
-     * @return
-     */
     public static <T> String obj2String(T src) {
         if (src == null) {
             return null;
@@ -52,14 +33,6 @@ public class JsonMapper {
         }
     }
 
-    /**
-     * 将字符串转换成对象
-     *
-     * @param src
-     * @param typeReference
-     * @param <T>
-     * @return
-     */
     public static <T> T string2Obj(String src, TypeReference<T> typeReference) {
         if (src == null || typeReference == null) {
             return null;

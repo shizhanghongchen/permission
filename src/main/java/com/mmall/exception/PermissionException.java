@@ -1,12 +1,6 @@
 package com.mmall.exception;
 
-/**
- * 自定义异常
- *
- * @Author: wb-yxk397023
- * @Date: Created in 2018/9/6
- */
-public class PermissionException extends RuntimeException{
+public class PermissionException extends RuntimeException {
 
     public PermissionException() {
         super();

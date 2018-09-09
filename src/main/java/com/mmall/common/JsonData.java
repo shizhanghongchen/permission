@@ -6,12 +6,6 @@ import lombok.Setter;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Http Json请求封装
- *
- * @Author: wb-yxk397023
- * @Date: Created in 2018/9/6
- */
 @Getter
 @Setter
 public class JsonData {
@@ -26,31 +20,31 @@ public class JsonData {
         this.ret = ret;
     }
 
-    public static JsonData success(Object object, String msg) {
-        JsonData jsonData = new JsonData(true);
+    public static com.mmall.common.JsonData success(Object object, String msg) {
+        com.mmall.common.JsonData jsonData = new com.mmall.common.JsonData(true);
         jsonData.data = object;
         jsonData.msg = msg;
         return jsonData;
     }
 
-    public static JsonData success(Object object) {
-        JsonData jsonData = new JsonData(true);
+    public static com.mmall.common.JsonData success(Object object) {
+        com.mmall.common.JsonData jsonData = new com.mmall.common.JsonData(true);
         jsonData.data = object;
         return jsonData;
     }
 
-    public static JsonData success() {
-        return new JsonData(true);
+    public static com.mmall.common.JsonData success() {
+        return new com.mmall.common.JsonData(true);
     }
 
-    public static JsonData fail(String msg) {
-        JsonData jsonData = new JsonData(false);
+    public static com.mmall.common.JsonData fail(String msg) {
+        com.mmall.common.JsonData jsonData = new com.mmall.common.JsonData(false);
         jsonData.msg = msg;
         return jsonData;
     }
 
     public Map<String, Object> toMap() {
-        HashMap<String, Object> result = new HashMap<>();
+        HashMap<String, Object> result = new HashMap<String, Object>();
         result.put("ret", ret);
         result.put("msg", msg);
         result.put("data", data);
