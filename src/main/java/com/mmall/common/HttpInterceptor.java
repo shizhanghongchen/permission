@@ -61,6 +61,7 @@ public class HttpInterceptor extends HandlerInterceptorAdapter {
         // 获取当前时间
         long end = System.currentTimeMillis();
         log.info("request finished. url:{}, cost:{}", url, end - start);
+        removeThreadLocalInfo();
     }
 
     /**
@@ -81,5 +82,13 @@ public class HttpInterceptor extends HandlerInterceptorAdapter {
         // 获取当前时间
         long end = System.currentTimeMillis();
         log.info("request completed. url:{}, cost:{}", url, end - start);
+        removeThreadLocalInfo();
+    }
+
+    /**
+     * 移除信息
+     */
+    public void removeThreadLocalInfo() {
+        RequestHolder.remove();
     }
 }
